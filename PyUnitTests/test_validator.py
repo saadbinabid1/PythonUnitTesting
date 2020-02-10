@@ -38,5 +38,26 @@ class MyTestCase(unittest.TestCase):
         ## Assertion
         self.assertFalse(result, 'username has all small characters')
 
+    def test_pwd_longpass_reject(self):
+        ## Assume
+        pwd = 'blablablablablablablablablabla'
+
+        ##Action
+        result = self.validator.password_isValid(pwd)
+
+        ## Assertion
+        self.assertFalse(result)
+
+    def test_pwd_specialpwd_reject(self):
+        ## Assume
+        pwd = 'bla@blablabla'
+
+        ##Action
+        result = self.validator.password_isValid_SpecialChar(pwd)
+
+        ## Assertion
+        self.assertFalse(result)
+
+
 if __name__ == '__main__':
     unittest.main()
